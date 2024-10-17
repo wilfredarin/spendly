@@ -1,0 +1,33 @@
+.tag-list, .selected-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.tag {
+    background-color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.tag:hover {
+    background-color: #d0d0d0;
+}
+.selected-tag {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.selected-tag span {
+    margin-right: 5px;
+}
+.remove-tag {
+    cursor: pointer;
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+    padding: 0 5px;
+}

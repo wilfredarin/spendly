@@ -1,0 +1,49 @@
+EJS Views 
+
+keeps views in folder 
+views to work need to [No default engine was specified ] set default engine
+Failed to lookup view "user-registeration" in views directory
+    by default it will look for view in apps' root's view directory (spendly\views)
+    import path
+    app.set("views",path.join(path.resolve(),"src","views"));
+use layout for uniform pages
+    - this will have boostrap
+    - this will have link to our own js and css 
+    - we need a middleware for using layouts
+        - import ejsLayouts from "express-ejs-layouts"
+        -app.use(ejsLayouts)
+        -make layout.ejs in Views
+    static files:
+        app.use(express.static("public"))
+        without it we cant use static files
+        now we can place out css,js and images in public folder
+        browser will automatically read it from there no need for routing
+        eg : <a href:"/images/image1.jpeg" ></a> will work on browser 
+        if our public/images/image1.jpeg is there in root directory
+
+Req.Body :
+ needs to be parsed else will give error 
+ Cannot destructure property 'name' of 'req.body' as it is undefined.
+ app.use(express.json());
+Form data:
+  enctype="multipart/form-data"
+  dont add this if your not using photo ro file upload -else it gives empty respense
+  name field in the form, decieds the name of the property at backend 
+
+  app.use(express.urlencoded({extended:true}))
+  need this else form data wont be parsed, empty form data will be there
+Designin the tags
+    we need html,css and JS for designing the feauture of picking tags
+
+
+important to return
+res.render() - > doesnt end the function and the code below it exute
+
+
+Challenge of laying out all the expense by month
+I have come up with an idea of - having a field in expense schema for MonthYear
+and simply filtering by month year or grouping by it 
+
+Date.now() - is a number not a Date
+so .getFullYear() and other function doesnt work on this 
+new Date() -> creates a date object and it has current date and time

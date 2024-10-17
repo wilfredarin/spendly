@@ -1,0 +1,39 @@
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+                <%if(tagData){%>
+                    <% tagData.expense.forEach(e=>{%>
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;margin:15px;">
+                    <div class="card-header"><%=e._id %></div>
+                    <div class="card-body">
+                      <h5 class="card-title">Expense : <%= e.totalExpenditure%></h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+                <%})%>
+                <%} %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+                <%if(expenseData){%>
+                    <% expenseData.forEach(e=>{%>
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;margin:15px;">
+                    <div class="card-header"><%=e.amount %></div>
+                    <div class="card-body">
+                      <h5 class="card-title">Expense : <%= e.comment%></h5>
+                      <p class="card-text"><%=e.date%></p>
+                    </div>
+                </div>
+                <%})%>
+                <%} %>
+               
+          </div>
+        </div>
+      </div>
+  </div>

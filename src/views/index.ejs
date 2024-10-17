@@ -1,0 +1,90 @@
+
+<form action="/expense/add" method="post" class="p-5">
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="amount">Amount</label>
+        <input name="amount" type="text" class="form-control" id="amount" placeholder="amount" required>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" name="date" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="comment">comment</label>
+      <input type="text" class="form-control" id="comment" name="comment" placeholder="spent for ?">
+    </div>
+    <input type="hidden" id="selected-tags-input" name="tags" value="">
+    <h5>Expense Tags:</h5>
+<div class="tag-list" id="tag-list">
+    <div class="tag">family</div>
+    <div class="tag">self</div>
+    <div class="tag">medical</div>
+    <div class="tag">overexpense</div>
+    <div class="tag">groceries</div>
+    <div class="tag">entertainment</div>
+    <div class="tag">medical</div>
+    <div class="tag">hey</div>
+    <div class="tag">groceriessucks</div>
+    <div class="tag">entertainmentsucks</div>
+    <div class="tag">medicalsucks</div>
+    <div class="tag">verexpensenight</div>
+  
+</div>
+<h5>Selected Tags:</h5>
+<div class="selected-tags" id="selected-tags">
+   <!-- Selected tags will appear here -->
+</div>
+    <button type="submit" class="btn btn-primary mt-2">Record Expense</button>
+</form>
+
+
+<script>
+    const tagList = document.getElementById('tag-list');
+    const tags = document.getElementById('selected-tags');
+    const tagsInput = document.getElementById('selected-tags-input');
+    let tagsArray = [];
+
+    // Function to update the hidden input
+    function updatetagsInput() {
+        tagsInput.value = tagsArray.join(',');
+    }
+
+    // Handle tag selection
+    tagList.addEventListener('click', function(e) {
+        if (e.target.classList.contains('tag')) {
+            const tag = e.target.textContent;
+            // Add to selected tags if not already selected
+            if (!tagsArray.includes(tag)) {
+                tagsArray.push(tag);
+                // Create the selected tag element with remove button
+                const selectedTagElement = document.createElement('div');
+                selectedTagElement.classList.add('selected-tag');
+                selectedTagElement.innerHTML = `<span>${tag}</span><div class="remove-tag">×</div>`;
+                tags.appendChild(selectedTagElement);
+                // Update hidden input value
+                updatetagsInput();
+            }
+        }
+    });
+
+    // Handle removing tags
+    tags.addEventListener('click', function(e) {
+        if (e.target.classList.contains('remove-tag')) {
+            const tag = e.target.parentElement.querySelector('span').textContent;
+            // Remove from selected tags array
+            tagsArray = tagsArray.filter(t => t !== tag);
+            // Remove the tag from the UI
+            e.target.parentElement.remove();
+            // Update hidden input value
+            updatetagsInput();
+        }
+    });
+        // Get the current date
+    const today = new Date().toISOString().split('T')[0]; // format to YYYY-MM-DD
+    // Set the input field's value to today's date
+    document.getElementById('date').value = today;
+</script>
+
+
+
