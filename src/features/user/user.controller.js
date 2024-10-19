@@ -43,3 +43,8 @@ export const userLogin = async (req, res) => {
         res.render("user-login",{error:repoResponse.error.message,userName:req.username,successMessage:null});
     }
   };
+
+
+  export const userLogout = async(req,res) =>{
+    res.cookie("jwtToken", null).redirect("/")
+  }

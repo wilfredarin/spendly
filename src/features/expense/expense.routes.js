@@ -1,5 +1,5 @@
 import express from "express";
-import { addExpense ,getFiveMonthsExpense,getMonthExpense} from "./expense.controller.js";
+import { addExpense ,getFiveMonthsExpense,getMonthExpenseDetail,getMonthExpenseSummary} from "./expense.controller.js";
 
 
 
@@ -7,5 +7,6 @@ const router = express.Router();
 
 router.post("/add",addExpense);
 router.get("/report",getFiveMonthsExpense)
-router.get("/month-detail/:monthYear",getMonthExpense)
+router.get("/month-detail/:monthYear",getMonthExpenseSummary)
+router.get("/month-detail/:monthYear",getMonthExpenseDetail)
 export default router;

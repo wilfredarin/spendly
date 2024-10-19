@@ -7,6 +7,7 @@ import connectToDb from "./src/config/database.js";
 import userRouter from "./src/features/user/user.routes.js"
 import expenseRouter from "./src/features/expense/expense.routes.js"
 import { userAuth } from "./src/middlewares/userAuth.js";
+import User from "./src/features/user/user.model.js";
 import ejsLayouts from "express-ejs-layouts";
 import jwt from "jsonwebtoken"
 const app = express();
@@ -25,19 +26,25 @@ app.use("/user/",userRouter);
 app.use("/expense/",userAuth,expenseRouter);
 
 //for first time the user hits
-app.get("/",(req,res)=>{
-    //check if loged in 
-    const { jwtToken } = req.cookies;
-    jwt.verify(jwtToken, process.env.JWT_SECRET, (err, data) =>{
-    if (err) {
-      return res.render("index",{userName:null,error:null,successMessage:null});
-    } else {
-      req._id = data._id;
-      req.username = data.username;
-      return res.render("index",{userName:req.user?.name,error:null,successMessage:null});
-    }
+app.get("/",async(req,res)=>{
+    //check if loged in
+    try{
+      const { jwtToken } = req.cookies;
+      jwt.verify(jwtToken, process.env.JWT_SECRET, async (err, data) =>{
+        if (err) {
+          return res.render("index",{userName:null,error:null,successMessage:null});
+        } else {
+          req._id = data._id;
+          req.user = await User.findById(req._id);
+          console.log("redirected",req.user.name)
+          return res.render("index",{userName:req.user?.name,error:null,successMessage:null});
+        }
+    }); 
+  }catch(err){
+    return res.render("index",{userName:req.user?.name,error:err.message,successMessage:null});
+  }
   });
-})
+
 app.listen(3000,async(req,res)=>{
     try{
         await connectToDb();

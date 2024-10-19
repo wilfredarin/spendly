@@ -1,4 +1,4 @@
-
+<% if(typeof userName !== 'undefined' && userName!=null ){%>
 <form action="/expense/add" method="post" class="p-5">
     <div class="form-row">
       <div class="form-group col-md-2">
@@ -85,6 +85,35 @@
     // Set the input field's value to today's date
     document.getElementById('date').value = today;
 </script>
+<%}else{%>
+    <h1>Welcome to Spendly - Your Smart Expense Tracker</h1>
+    Managing your finances just got easier with Spendly! Whether you're budgeting for family expenses, tracking personal spending, or analyzing trends in your expenditures, Spendly helps you stay on top of your finances effortlessly.
+    
+    <h2>Why Spendly?</h2>
+    Easy Expense Tracking: Add and categorize your expenses with custom tags like family, medical, groceries, and more.
+    Monthly Summaries: Get a clear view of how much you're spending each month, all neatly organized by category.
+    Visual Analytics: Spot spending patterns with insightful trends and charts.
+    Download Reports: Generate and download detailed expense reports in PDF format for any month.
+    How It Works
+    Sign Up or Log In: Create your account or log in to access your personal Spendly dashboard.
+    
+    Add Expenses: Enter your daily expenses quickly and categorize them with tags like Family, Groceries, Entertainment, or create your own custom tags!
+    
+    View Monthly Summary: Get a detailed breakdown of your monthly expenses. You can see a list of all the expenses for a particular month or dive deeper into specific categories.
+    
+    Track Spending Trends: View your spending trends over time and see where your money goes. Analyze by month or category to get a better handle on your budget.
+    
+    Download Expense Reports: Need a copy of your expenses? Simply download a PDF report for any month, ready to print or share with others.
+    
+    <h2>Features at a Glance</h2>
+    <h3>Categorized Expenses:</h3> Group your spending with custom tags.
+    <h3>Visual Insights:</h3> Analyze spending trends and patterns easily.
+    <h3>PDF Reports:</h3> Download and share detailed monthly reports.
+    <h4>Custom Tags:</h4> Personalize how you categorize your spending.
+    <h4>Secure & Private:</h4> Your data is safe and secure with us.
+    Get Started Now!
+    Take control of your finances with Spendly and make budgeting stress-free. Sign up now to track your spending and achieve your financial goals!
 
 
 
+<%}%>

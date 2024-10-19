@@ -47,3 +47,8 @@ and simply filtering by month year or grouping by it
 Date.now() - is a number not a Date
 so .getFullYear() and other function doesnt work on this 
 new Date() -> creates a date object and it has current date and time
+
+Context 
+we can not pass and object in here and still avoid error
+typeof user !== 'undefined'  we can use this in ejs
+
