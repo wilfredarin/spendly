@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.post("/add",addExpense);
 router.get("/report",getFiveMonthsExpense)
-router.get("/month-detail/:monthYear",getMonthExpenseSummary)
+router.get("/month-summary/:monthYear",getMonthExpenseSummary)
 router.get("/month-detail/:monthYear",getMonthExpenseDetail)
 export default router;

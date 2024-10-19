@@ -36,12 +36,11 @@ app.get("/",async(req,res)=>{
         } else {
           req._id = data._id;
           req.user = await User.findById(req._id);
-          console.log("redirected",req.user.name)
-          return res.render("index",{userName:req.user?.name,error:null,successMessage:null});
+          return res.render("index",{user:req.user,userName:req.user?.name,error:null,successMessage:null});
         }
     }); 
   }catch(err){
-    return res.render("index",{userName:req.user?.name,error:err.message,successMessage:null});
+    return res.render("index",{user:req.user,userName:req.user?.name,error:err.message,successMessage:null});
   }
   });
 

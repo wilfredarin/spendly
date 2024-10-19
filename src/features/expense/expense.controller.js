@@ -48,7 +48,7 @@ export const getMonthExpenseSummary = async(req,res)=>{
         console.log(monthYear,"year")
         const repoResponseTags = await getDetailByTagsRepo(monthYear,user);
         if(repoResponseTags.success){
-            res.render("month-summary",{tagData:repoResponseTags.data,
+            res.render("month-summary",{tagData:repoResponseTags.data,monthYear:monthYear,
                 userName:req.user?.name,error:null,successMessage:`Monthly Expense Detail for ${monthYear} Fetched!`});
         } else {
             res.render("month-wise-expense",{data:null,error:repoResponseTags.error.message,userName:req.user?.name,successMessage:null});

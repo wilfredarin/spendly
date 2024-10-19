@@ -1,18 +1,20 @@
+<div class="container-fluid">
 <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
+    
+     
           <%if(data){%>
               <% data.forEach(e=>{%>
-          <div class="card text-white bg-info mb-3" style="max-width: 18rem;margin:15px;">
-              <div class="card-header"><%=e.amount %></div>
-              <div class="card-body">
-                <h5 class="card-title">Expense : <%= e.comment%></h5>
+            <div class="card">
+              <div class="card border-primary mb-3" style="max-width: 18rem;margin:15px;">
+                <div class="card-header"><%= e.tags%></div>
+                <div class="card-body">
+                <h5 class="card-title">Amount :<%=e.amount %></h5>
                 <p class="card-text"><%=e.date%></p>
+                <p class="card-text"><%=e.comment%></p>
               </div>
           </div>
           <%})%>
           <%} %>   
-    </div>
+
   </div>
-</div>
 </div>

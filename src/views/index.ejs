@@ -1,4 +1,4 @@
-<% if(typeof userName !== 'undefined' && userName!=null ){%>
+<% if(typeof user !== 'undefined' && userName!=null ){%>
 <form action="/expense/add" method="post" class="p-5">
     <div class="form-row">
       <div class="form-group col-md-2">
@@ -17,19 +17,10 @@
     <input type="hidden" id="selected-tags-input" name="tags" value="">
     <h5>Expense Tags:</h5>
 <div class="tag-list" id="tag-list">
-    <div class="tag">family</div>
-    <div class="tag">self</div>
-    <div class="tag">medical</div>
-    <div class="tag">overexpense</div>
-    <div class="tag">groceries</div>
-    <div class="tag">entertainment</div>
-    <div class="tag">medical</div>
-    <div class="tag">hey</div>
-    <div class="tag">groceriessucks</div>
-    <div class="tag">entertainmentsucks</div>
-    <div class="tag">medicalsucks</div>
-    <div class="tag">verexpensenight</div>
-  
+ 
+    <% user.userTags.forEach(e=> {%>
+    <div class="tag"><%=e%></div>
+<%})%>
 </div>
 <h5>Selected Tags:</h5>
 <div class="selected-tags" id="selected-tags">
